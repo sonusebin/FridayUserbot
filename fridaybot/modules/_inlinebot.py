@@ -249,7 +249,7 @@ async def fuck_off(event):
         results.append(
                 await event.builder.photo(
                     file='https://png.pngtree.com/element_our/20190530/ourlarge/pngtree-search-icon-image_1257308.jpg',
-                    text=lul.message,
+                    text=lul.text,
                 )
         )
     await event.answer(results)
