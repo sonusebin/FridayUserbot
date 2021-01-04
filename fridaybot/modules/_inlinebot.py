@@ -8,7 +8,6 @@ from telethon import Button, custom, events, functions
 from youtubesearchpython import VideosSearch
 from fridaybot import ALIVE_NAME, CMD_HELP, CMD_LIST
 from fridaybot.modules import inlinestats
-
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
 if PMPERMIT_PIC is None:
     WARN_PIC = "https://telegra.ph/file/53aed76a90e38779161b1.jpg"
