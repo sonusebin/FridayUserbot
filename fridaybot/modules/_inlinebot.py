@@ -246,10 +246,11 @@ async def fuck_off(event):
     query = event.pattern_match.group(1)
     chat = -1001227729243
     async for lul in bot.iter_messages(chat, search=query, limit=20):
+        hmm_s = f"{lul.text} \n**Visit To Know More: https://t.me/TgopenSource/{lul.id}**"
         results.append(
                 await event.builder.photo(
-                    file='https://png.pngtree.com/element_our/20190530/ourlarge/pngtree-search-icon-image_1257308.jpg',
-                    text=lul.text,
+                    file='https://telegra.ph/file/652bb2b2eab82ae2437d4.jpg',
+                    text=hmm_s,
                 )
         )
     await event.answer(results)
