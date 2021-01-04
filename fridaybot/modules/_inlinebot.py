@@ -2,7 +2,7 @@ import os
 import re
 import urllib
 from math import ceil
-
+from fridaybot import bot
 import requests
 from telethon import Button, custom, events, functions
 from youtubesearchpython import VideosSearch
@@ -189,7 +189,6 @@ async def rip(event):
         buttons=[Button.url("Contact Him", f"tg://user?id={him_id}")],
     )
 
-
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"askme")))
 async def rip(event):
     if event.query.user_id == bot.uid:
@@ -242,7 +241,20 @@ def paginate_help(page_number, loaded_modules, prefix):
         ]
     return pairs
 
-
+@tgbot.on(events.InlineQuery(pattern=r"nibba (.*)"))
+async def fuck_off(event):
+    results = []
+    query = event.pattern_match.group(1)
+    chat = -1001227729243
+    async for lul in bot.iter_messages(chat, search=query, limit=20):
+        results.append(
+                await event.builder.photo(
+                    file='https://png.pngtree.com/element_our/20190530/ourlarge/pngtree-search-icon-image_1257308.jpg',
+                    text=lul.message,
+                )
+        )
+    await event.answer(results)
+    
 @tgbot.on(events.InlineQuery(pattern=r"torrent (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
     builder = event.builder
