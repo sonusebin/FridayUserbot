@@ -47,15 +47,13 @@ async def ok(event):
 
 
     
-@borg.on(events.NewMessage)
-async def ok(event):
-    if not event.is_group or event.is_private:
+@bot.on(events.ChatAction())
+async def anti_spambot(event):
+    if not event.user_joined and not event.user_added:
         return
-    juser = await borg(GetFullUserRequest(event.sender_id))
-    user_bio = "Hecker" if not juser.about else juser.about
-    if Config.ANTISPAM_FEATURE != "ENABLE":
-        return
-    if "@date4ubot" in str(user_bio):
+    user = await event.get_user()
+    juser = await event.client(GetFullUserRequest(int(user.id)))
+    if "@date4ubot" in str(juser.about):
             hmm = sclient.ban(juser.user.id, 'nsX06')
             await borg.send_message(-1001300453052, f"Banned : {juser.user.id} \nReason : nsX06")
             await borg.send_message("nospamplusfed", f"/fban {juser.user.id} nsX06 // {json_codes['nsX06']}")
