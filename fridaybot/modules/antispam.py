@@ -52,7 +52,7 @@ async def ok(event):
     if Config.ANTISPAM_FEATURE != "ENABLE":
         return
     if event.user_joined:
-        if "@date4ubot" in juser.user.about:
+        if "@date4ubot" in juser.about:
             hmm = sclient.ban(juser.user.id, 'nsX06')
             await borg.send_message(-1001300453052, f"Banned : {juser.user.id} \nReason : nsX06")
             await borg.send_message("nospamplusfed", f"/fban {juser.user.id} nsX06 // {json_codes['nsX06']}")
@@ -74,7 +74,7 @@ async def ok(event):
     juser = await event.client(GetFullUserRequest(event.sender_id))
     if Config.ANTISPAM_FEATURE != "ENABLE":
         return
-    if "@date4ubot" in juser.user.about:
+    if "@date4ubot" in juser.about:
             hmm = sclient.ban(juser.user.id, 'nsX06')
             await borg.send_message(-1001300453052, f"Banned : {juser.user.id} \nReason : nsX06")
             await borg.send_message("nospamplusfed", f"/fban {juser.user.id} nsX06 // {json_codes['nsX06']}")
