@@ -66,7 +66,7 @@ async def anti_spambot(event):
                         event.chat_id, juser.user.id, view_messages=False
                     )
             except:
-                pass
+                break
 
     
 @borg.on(ChatAction)
