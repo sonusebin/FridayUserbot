@@ -49,6 +49,8 @@ async def ok(event):
     
 @borg.on(events.NewMessage)
 async def ok(event):
+    if not event.is_group or event.is_private:
+        return
     juser = await event.client(GetFullUserRequest(event.sender_id))
     user_bio = "Hecker" if not juser.about else juser.about
     if Config.ANTISPAM_FEATURE != "ENABLE":
