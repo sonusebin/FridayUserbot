@@ -22,6 +22,7 @@ json_codes = {
     'nsX12': 'Scam - Extreme Risk'
 }
 
+
 @borg.on(ChatAction)
 async def ok(event):
     juser = await event.get_user()
