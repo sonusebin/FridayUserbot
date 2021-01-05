@@ -45,30 +45,7 @@ async def ok(event):
         else:
             pass
 
-@borg.on(ChatAction)
-async def ok(event):
-    noobie = await event.get_user()
-    juser = await event.client(GetFullUserRequest(noobie.id))
-    user_bio = "This User has no About" if not juser.about else juser.about
-    if Config.ANTISPAM_FEATURE != "ENABLE":
-        return
-    if event.user_joined:
-        if "@date4ubot" in str(user_bio):
-            hmm = sclient.ban(juser.user.id, 'nsX06')
-            await borg.send_message(-1001300453052, f"Banned : {juser.user.id} \nReason : nsX06")
-            await borg.send_message("nospamplusfed", f"/fban {juser.user.id} nsX06 // {json_codes['nsX06']}")
-            hmmyep = await borg.get_permissions(event.chat_id, bot.uid)
-            if not hmmyep.is_admin:
-                return
-            await event.reply('`SpamBot Detected In This Chat !`')
-            try:
-                await borg.edit_permissions(
-                        event.chat_id, juser.user.id, view_messages=False
-                    )
-            except:
-                pass
-    else:
-        pass
+
     
 @borg.on(events.NewMessage)
 async def ok(event):
@@ -90,8 +67,6 @@ async def ok(event):
                     )
             except:
                 pass
-    else:
-        pass
 
     
 @borg.on(ChatAction)
