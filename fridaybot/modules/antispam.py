@@ -1,4 +1,5 @@
 from telethon.events import ChatAction
+import antispam
 
 from fridaybot import bot, sclient
 from fridaybot.Configs import Config
@@ -6,6 +7,7 @@ from fridaybot.Configs import Config
 """Bans Spammers/Scammer At time Of Arrival 
 If You Add Him The Bot Won't Restrict."""
 
+d = antispam.Detector("resources/models/my_model.dat")
 
 @borg.on(ChatAction)
 async def ok(event):
@@ -56,3 +58,9 @@ async def dnamg(event):
             Config.PRIVATE_GROUP_ID,
             f"**WARNING - SPAM ADDING** \nUSER : `{added_bys}` \nCHAT : `{lmao_info}` \nGROUP PRIVATE : `{is_pvt}` \n**You May Report This At @SpamWatch Or @NospamPlusChat.**",
         )
+@bot.on(events.NewMessage())
+async def lud(event):
+    spam_text = event.text
+    if d.is_spam(spam_text):
+        await event.forward_to(Config.PRIVATE_GROUP_ID, spam_text)
+        
